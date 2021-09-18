@@ -9,7 +9,6 @@ import {
   MdLocationCity,
   MdCheck,
   MdHeadsetMic,
-  MdAcUnit,
 } from "react-icons/md";
 import houseAnimation from "../assets/animations/houseAnimation.json";
 
@@ -39,7 +38,7 @@ const tt = [
     url: "https://imoveis.mrv.com.br//upload/imagens/4027//20200310093245_RESIDENCIAL_TUPINAMB%C3%81S_PH_ESPA%C3%87O_KIDS_2020_03_09.jpg",
   },
   {
-    id: "Campo Grande",
+    id: "Bonsucesso",
     url: "https://imoveis.mrv.com.br//upload/imagens/4027//20200310093245_RESIDENCIAL_TUPINAMB%C3%81S_PH_ESPA%C3%87O_KIDS_2020_03_09.jpg",
   },
 ];
@@ -181,7 +180,7 @@ export default function Home() {
         <ul className="flex flex-col items-center justify-between w-full my-12 lg:flex-row">
           <li className="flex flex-col items-center max-w-xs">
             <motion.div whileHover={{ rotate: 360 }}>
-              <MdLocationCity className="w-20 h-20 mx-auto mb-8 text-yellow-500 cursor-pointer" />
+              <MdLocationCity className="w-20 h-20 mx-auto mb-8 text-yellow-500 sm:cursor-pointer" />
             </motion.div>
             <h1 className="text-base font-bold">1. Escolha sua localidade</h1>
             <span className="my-3">
@@ -191,7 +190,7 @@ export default function Home() {
           <MdKeyboardArrowRight className="invisible w-12 h-12 mx-8 text-green-200 lg:visible" />
           <li className="flex flex-col items-center max-w-xs">
             <motion.div whileHover={{ rotate: 360 }}>
-              <MdCheck className="w-20 h-20 mx-auto mb-8 text-yellow-500 cursor-pointer" />
+              <MdCheck className="w-20 h-20 mx-auto mb-8 text-yellow-500 sm:cursor-pointer" />
             </motion.div>
             <h1 className="text-base font-bold">2. Faça sua simulação</h1>
             <span className="my-3">
@@ -202,8 +201,8 @@ export default function Home() {
           <MdKeyboardArrowRight className="invisible w-12 h-12 mx-8 text-green-200 lg:visible" />
           <li className="flex flex-col items-center max-w-xs">
             <motion.div whileHover={{ rotate: 360 }}>
-              <MdHeadsetMic className="w-20 h-20 mx-auto mb-8 text-yellow-500 cursor-pointer" />
-            </motion.div>{" "}
+              <MdHeadsetMic className="w-20 h-20 mx-auto mb-8 text-yellow-500 sm:cursor-pointer" />
+            </motion.div>
             <h1 className="text-base font-bold">3. Aguarde o contato</h1>
             <span className="my-3">
               Um dos nossos agentes entrará em contato para um atendimento mais
@@ -258,7 +257,10 @@ export default function Home() {
         >
           {tt.map((res, idx) => {
             return (
-              <div className="flex-shrink-0 mr-3 w-[26rem] h-48 text-center">
+              <div
+                key={idx}
+                className="flex-shrink-0 mr-3 w-[26rem] h-48 text-center"
+              >
                 <motion.div
                   className="w-full h-full p-1 mr-3 bg-green-500 rounded-md cursor-pointer"
                   style={{
