@@ -132,7 +132,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className="flex items-center justify-center max-w-6xl py-6 m-auto">
-        <h1 className="text-2xl font-bold text-green-600 cursor-pointer">
+        <h1 className="text-2xl font-bold text-green-600 sm:cursor-pointer">
           APÊ JÁ
         </h1>
       </header>
@@ -163,6 +163,7 @@ export default function Home() {
           <Lottie
             width="20rem"
             height="20rem"
+            style={{ cursor: "none" }}
             options={{
               loop: true,
               autoplay: true,
@@ -184,7 +185,7 @@ export default function Home() {
             </motion.div>
             <h1 className="text-base font-bold">1. Escolha sua localidade</h1>
             <span className="my-3">
-              Buscas baseadas na sua localização e características do animal
+              Escolha o local de sua preferencia para resultados mais precisos.
             </span>
           </li>
           <MdKeyboardArrowRight className="invisible w-12 h-12 mx-8 text-green-200 lg:visible" />
