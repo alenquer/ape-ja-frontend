@@ -361,7 +361,7 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch("http://localhost:3000/api/ape");
+  const res = await fetch(process.env.BASE_URL + "/api/ape");
   const data = await res.json();
 
   if (!data) {
