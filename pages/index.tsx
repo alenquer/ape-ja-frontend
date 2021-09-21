@@ -12,41 +12,11 @@ import {
 } from "react-icons/md";
 import houseAnimation from "../assets/animations/houseAnimation.json";
 
-const tt = [
-  {
-    id: "Nova Iguaçu",
-    url: "https://imoveis.mrv.com.br//upload/imagens/4027//20200310093245_RESIDENCIAL_TUPINAMB%C3%81S_PH_ESPA%C3%87O_KIDS_2020_03_09.jpg",
-  },
-  {
-    id: "Caxias",
-    url: "https://imoveis.mrv.com.br//upload/imagens/4027//20200310093245_RESIDENCIAL_TUPINAMB%C3%81S_PH_ESPA%C3%87O_KIDS_2020_03_09.jpg",
-  },
-  {
-    id: "Méier",
-    url: "https://imoveis.mrv.com.br//upload/imagens/4027//20200310093245_RESIDENCIAL_TUPINAMB%C3%81S_PH_ESPA%C3%87O_KIDS_2020_03_09.jpg",
-  },
-  {
-    id: "Campo Grande",
-    url: "https://imoveis.mrv.com.br//upload/imagens/4027//20200310093245_RESIDENCIAL_TUPINAMB%C3%81S_PH_ESPA%C3%87O_KIDS_2020_03_09.jpg",
-  },
-  {
-    id: "Campo Grande",
-    url: "https://imoveis.mrv.com.br//upload/imagens/4027//20200310093245_RESIDENCIAL_TUPINAMB%C3%81S_PH_ESPA%C3%87O_KIDS_2020_03_09.jpg",
-  },
-  {
-    id: "Campo Grande",
-    url: "https://imoveis.mrv.com.br//upload/imagens/4027//20200310093245_RESIDENCIAL_TUPINAMB%C3%81S_PH_ESPA%C3%87O_KIDS_2020_03_09.jpg",
-  },
-  {
-    id: "Bonsucesso",
-    url: "https://imoveis.mrv.com.br//upload/imagens/4027//20200310093245_RESIDENCIAL_TUPINAMB%C3%81S_PH_ESPA%C3%87O_KIDS_2020_03_09.jpg",
-  },
-];
-
-export default function Home() {
-  const [sliderConstraints, setSliderConstraints] = useState(0);
+export default function Home({ data }) {
   const [page, setPage] = useState(1);
-  const [maxPage, setMaxPage] = useState(3);
+  const [loading, setLoading] = useState(data.length === 0);
+  const [maxPage, setMaxPage] = useState(Math.ceil(data.length / 3));
+  const [windowSize, setWindowSize] = useState(0);
 
   const ref = useRef<any>(null);
 
@@ -75,9 +45,11 @@ export default function Home() {
   // }
 
   useEffect(() => {
-    //setSliderConstraints(ref.current.scrollWidth - ref.current.clientWidth);
+    setWindowSize(window.innerWidth);
 
     window.addEventListener("resize", (e: any) => {
+      if (loading) return;
+
       const xPos = translateXForElement(ref.current);
 
       if (xPos < 0) {
@@ -87,14 +59,12 @@ export default function Home() {
         setPage(1);
       }
 
-      //setSliderConstraints(ref.current.scrollWidth - ref.current.clientWidth);
+      setWindowSize(window.innerWidth);
     });
   }, []);
 
   function onLeftClick() {
-    //const xPos = translateXForElement(ref.current);
     const xSize = ref.current.children[0].clientWidth + 12;
-    //const newXPosition = reorder(xPos + xSize * 3, xSize);
 
     const newXPosition = (page - 2) * 3 * xSize;
 
@@ -102,15 +72,10 @@ export default function Home() {
       x: page > 1 ? -newXPosition : 0,
     });
 
-    // animation.start({
-    //   x: newXPosition > 0 ? 0 : newXPosition,
-    // });
-
     setPage(page > 1 ? page - 1 : 1);
   }
 
   function onRightClick() {
-    //const xPos = translateXForElement(ref.current);
     const xSize = ref.current.children[0].clientWidth + 12;
 
     if (page === maxPage) return;
@@ -125,6 +90,29 @@ export default function Home() {
   }
 
   let activeColor = (v: number) => (page === v ? "#badfa8" : "#329d00");
+
+  const ApeCard: React.FC<{ name: any; thumbnail: any }> = ({
+    name,
+    thumbnail,
+  }) => {
+    return (
+      <li className="flex-shrink-0 mr-3 w-[26rem] h-48 text-center">
+        <motion.div
+          className="w-full h-full p-1 mr-3 bg-green-500 rounded-md cursor-pointer"
+          style={{
+            backgroundImage: `url(${thumbnail})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+          whileHover={{ scale: 0.7 }}
+          whileTap={{ scale: 0.9 }}
+        />
+        <span className="block mt-2 text-black">{name}</span>
+      </li>
+    );
+  };
+
   return (
     <div>
       <Head>
@@ -154,9 +142,11 @@ export default function Home() {
             <li className="before:inline-block before:w-2 before:h-2 before:bg-white before:mr-2 before:rounded-full m-0.5 text-white text-lg font-jost">
               Atendimento personalizado
             </li>
-            <button className="px-12 py-2 mt-4 font-bold text-white bg-orange-400 rounded hover:bg-orange-200">
-              SIMULAÇÃO
-            </button>
+            <a href="https://forms.gle/Yauzpts1mkhQMWuz7" target="_blank">
+              <button className="px-12 py-2 mt-4 font-bold text-white bg-orange-400 rounded hover:bg-orange-200">
+                SIMULAÇÃO
+              </button>
+            </a>
           </ul>
         </aside>
         <aside className="flex items-center justify-center w-2/5">
@@ -243,41 +233,31 @@ export default function Home() {
         </div>
         <motion.ul
           ref={ref}
-          className="flex items-center justify-between w-full h-64"
+          className="flex items-center w-full h-64"
           drag="x"
           animate={animation}
           onDragEnd={(e, info) => {
-            if (ref.current.clientWidth >= 1280) {
+            if (windowSize > 1280) {
               info.offset.x > 0 ? onLeftClick() : onRightClick();
             }
           }}
           dragConstraints={{
-            left: -(1280 * (maxPage - 1)),
+            left:
+              windowSize > 1280
+                ? -(1280 * (maxPage - 1))
+                : -(ref.current?.scrollWidth - ref.current?.clientWidth),
             right: 0,
           }}
         >
-          {tt.map((res, idx) => {
+          {data.map((res, idx) => {
             return (
-              <div
-                key={idx}
-                className="flex-shrink-0 mr-3 w-[26rem] h-48 text-center"
-              >
-                <motion.div
-                  className="w-full h-full p-1 mr-3 bg-green-500 rounded-md cursor-pointer"
-                  style={{
-                    backgroundImage: `url(${res.url})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                  whileHover={{ scale: 0.7 }}
-                  whileTap={{ scale: 0.9 }}
-                  key={idx}
-                />
-                <span className="block mt-2 text-black">{res.id}</span>
-              </div>
+              <ApeCard key={idx} name={res.name} thumbnail={res.thumbnail} />
             );
           })}
+          <ApeCard
+            name="Escolher Localidade"
+            thumbnail="https://imgur.com/BzZap0h.jpg"
+          />
         </motion.ul>
       </section>
       <hr className="h-px mx-auto my-16 bg-gray-300 max-w-7xl" />
@@ -356,12 +336,14 @@ export default function Home() {
               região e encontrar os melhores empreendimentos.
             </span>
           </h1>
-          <button
-            type="button"
-            className="inline-flex items-center h-12 px-8 font-bold text-white transition duration-150 ease-in-out bg-yellow-700 border border-transparent rounded-full hover:bg-orange-200 focus:outline-none active:bg-yellow-700"
-          >
-            CONTACTAR
-          </button>
+          <a href="https://forms.gle/Yauzpts1mkhQMWuz7" target="_blank">
+            <button
+              type="button"
+              className="inline-flex items-center h-12 px-8 font-bold text-white transition duration-150 ease-in-out bg-yellow-700 border border-transparent rounded-full hover:bg-orange-200 focus:outline-none active:bg-yellow-700"
+            >
+              CONTATO
+            </button>
+          </a>
         </div>
       </section>
       <footer className="flex items-center justify-center w-full h-24 border-t">
@@ -376,4 +358,19 @@ export default function Home() {
       </footer>
     </div>
   );
+}
+
+export async function getServerSideProps(context) {
+  const res = await fetch("http://localhost:3000/api/ape");
+  const data = await res.json();
+
+  if (!data) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { data },
+  };
 }
