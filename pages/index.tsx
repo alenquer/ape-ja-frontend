@@ -360,8 +360,8 @@ export default function Home({ data }) {
   );
 }
 
-export async function getStaticProps(context) {
-  const res = await fetch(process.env.BASE_URL + "/api/ape");
+export async function getServerSideProps(context) {
+  const res = await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/ape");
   const data = await res.json();
 
   if (!data) {
