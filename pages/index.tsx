@@ -360,7 +360,7 @@ export default function Home({ data }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const res = await fetch(process.env.BASE_URL + "/api/ape");
   const data = await res.json();
 
