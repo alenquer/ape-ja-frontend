@@ -10,6 +10,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name="facebook-domain-verification"
+            content="2ghrcyxrwm5n80xy6knsv9vpf54cch"
+          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
