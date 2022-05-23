@@ -133,11 +133,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
 
               <ul className="social-links">
                 <li>
-                  <a
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.instagram.com/corretoracristinacordeiro"
-                  >
+                  <a href="https://www.instagram.com/corretoracristinacordeiro">
                     <svg
                       width="24"
                       height="24"
@@ -179,11 +175,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
                 </li>
 
                 <li>
-                  <a
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.facebook.com/cc.corretora"
-                  >
+                  <a href="https://www.facebook.com/cc.corretora">
                     <svg
                       width="24"
                       height="24"
@@ -206,11 +198,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
                 </li>
 
                 <li>
-                  <a
-                    target="_blank"
-                    rel="noopener"
-                    href="https://www.youtube.com"
-                  >
+                  <a href="https://www.youtube.com">
                     <svg
                       width="24"
                       height="24"
@@ -703,8 +691,6 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
                 <a
                   onClick={gtag_report_conversion}
                   className="button"
-                  target="_blank"
-                  rel="noopener"
                   href="https://api.whatsapp.com/send?phone=5521965316122&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o."
                 >
                   <svg
@@ -762,11 +748,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
           <div className="col-b">
             <ul className="social-links">
               <li>
-                <a
-                  target="_blank"
-                  rel="noopener"
-                  href="https://www.instagram.com/corretoracristinacordeiro"
-                >
+                <a href="https://www.instagram.com/corretoracristinacordeiro">
                   <svg
                     width="24"
                     height="24"
@@ -808,11 +790,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
               </li>
 
               <li>
-                <a
-                  target="_blank"
-                  rel="noopener"
-                  href="https://www.facebook.com/cc.corretora"
-                >
+                <a href="https://www.facebook.com/cc.corretora">
                   <svg
                     width="24"
                     height="24"
@@ -835,11 +813,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
               </li>
 
               <li>
-                <a
-                  target="_blank"
-                  rel="noopener"
-                  href="https://www.youtube.com"
-                >
+                <a href="https://www.youtube.com">
                   <svg
                     width="24"
                     height="24"
@@ -880,8 +854,6 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
 
       <a
         id="whats-button"
-        target="_blank"
-        rel="noopener"
         onClick={gtag_report_conversion}
         href="https://api.whatsapp.com/send?phone=5521965316122&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o."
         ref={whatsButtonRef}
