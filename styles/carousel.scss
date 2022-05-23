@@ -47,10 +47,11 @@
 .slider-icon.left,
 .slider-icon.right {
   background: white;
-  border-radius: 100%;
+  border-radius: 999px;
   position: absolute;
   opacity: 0.5;
-  box-shadow: 2px 2px 2px 2px rgb(0 0 0 / 12%);
+  -webkit-filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.3));
   cursor: pointer;
   transform: translateY(-40px);
 }
@@ -112,7 +113,8 @@
 @media screen and (max-width: 1120px) {
   #main-slider-container {
     width: min(50rem, 100%);
-    margin-inline: auto;
+    //margin-inline: auto;
+    margin: auto;
   }
 
   .slider-icon.left,
