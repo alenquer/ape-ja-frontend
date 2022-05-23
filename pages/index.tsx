@@ -69,7 +69,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
   return (
     <>
       <Head>
-        <title>Corretora de imóveis - RJ</title>
+        <title>Cristina Cordeiro - Corretora de imóveis - RJ</title>
         <meta
           name="description"
           content="Assistência imobiliária simplificada para todos"
