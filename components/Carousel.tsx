@@ -67,6 +67,7 @@ export const Carousel: React.FC<IProps> = (props) => {
                     "https://api.whatsapp.com/send?phone=5521965316122&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o."
                   }
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <div
                     className="slider-card-image"
@@ -89,6 +90,7 @@ export const Carousel: React.FC<IProps> = (props) => {
             <a
               href="https://api.whatsapp.com/send?phone=5521965316122&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o."
               target="_blank"
+              rel="noreferrer"
             >
               <div className="slider-card-image" />
             </a>

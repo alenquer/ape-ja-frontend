@@ -5,6 +5,7 @@ import { AiOutlineWhatsApp } from "react-icons/ai";
 import { Carousel } from "../components/Carousel";
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
 
 const Home: NextPage = ({ apeList, networkList }: any) => {
   const navRef = useRef<HTMLElement>(null);
@@ -119,6 +120,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
                 <li>
                   <a
                     target="_blank"
+                    rel="noreferrer"
                     href="https://www.instagram.com/corretoracristinacordeiro"
                   >
                     <svg
@@ -164,6 +166,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
                 <li>
                   <a
                     target="_blank"
+                    rel="noreferrer"
                     href="https://www.facebook.com/cc.corretora"
                   >
                     <svg
@@ -188,7 +191,11 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
                 </li>
 
                 <li>
-                  <a target="_blank" href="https://www.youtube.com">
+                  <a
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://www.youtube.com"
+                  >
                     <svg
                       width="24"
                       height="24"
@@ -352,9 +359,13 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
             </div>
 
             <div className="col-b">
-              <img
+              <Image
+                width={"100%"}
+                height={"100%"}
+                layout="responsive"
                 src="/corretora-apontando-beneficios.png"
                 alt="Corretora apontando para os benefícios do financiamento"
+                priority
               />
             </div>
 
@@ -628,7 +639,10 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
             </div>
 
             <div className="col-b">
-              <img
+              <Image
+                width={"100%"}
+                height={"100%"}
+                layout="responsive"
                 src="/quote-person.jpg"
                 alt="Corretora ensinando a conquistar clientes"
                 style={{ borderRadius: 11 }}
@@ -678,6 +692,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
                 <a
                   className="button"
                   target="_blank"
+                  rel="noreferrer"
                   href="https://api.whatsapp.com/send?phone=5521965316122&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o."
                 >
                   <svg
@@ -713,8 +728,10 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
             </div>
 
             <div className="col-b">
-              <img
-                src="corretora-aguardando-contato.jpg"
+              <Image
+                width={1150}
+                height={758}
+                src="/corretora-aguardando-contato.jpg"
                 alt="Corretora aguardando contatos"
                 style={{ borderRadius: 11 }}
               />
@@ -733,6 +750,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
               <li>
                 <a
                   target="_blank"
+                  rel="noreferrer"
                   href="https://www.instagram.com/corretoracristinacordeiro"
                 >
                   <svg
@@ -776,7 +794,11 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
               </li>
 
               <li>
-                <a target="_blank" href="https://www.facebook.com/cc.corretora">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.facebook.com/cc.corretora"
+                >
                   <svg
                     width="24"
                     height="24"
@@ -799,7 +821,11 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
               </li>
 
               <li>
-                <a target="_blank" href="https://www.youtube.com">
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://www.youtube.com"
+                >
                   <svg
                     width="24"
                     height="24"
@@ -841,6 +867,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
       <a
         id="whats-button"
         target="_blank"
+        rel="noreferrer"
         href="https://api.whatsapp.com/send?phone=5521965316122&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o."
         ref={whatsButtonRef}
       >
