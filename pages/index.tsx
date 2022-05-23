@@ -31,6 +31,22 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
     }
   }
 
+  function gtag_report_conversion(url: any) {
+    var callback = function () {
+      if (typeof url != "undefined") {
+        window.location = url;
+      }
+    };
+
+    //@ts-ignore
+    window.gtag("event", "conversion", {
+      send_to: process.env.NEXT_PUBLIC_GOOGLE_SNIPPET,
+      event_callback: callback,
+    });
+
+    return false;
+  }
+
   function activateMenuAtCurrentSection(sectionId: string) {
     const a = document.getElementById("menu-links");
 
@@ -69,28 +85,12 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
   return (
     <>
       <Head>
-        <title>Cristina Cordeiro - Corretora de imóveis - RJ</title>
+        <title>Cristina Cordeiro - Corretora de Imóveis - RJ</title>
         <meta
           name="description"
           content="Assistência imobiliária simplificada para todos"
         />
         <link rel="icon" href="/favicon.ico" />
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-              page_path: window.location.pathname,
-            });
-          `,
-          }}
-        />
       </Head>
       <header>
         <nav ref={navRef} id="navigation">
@@ -127,11 +127,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
                 </li>
               </ul>
 
-              <a
-                className="button"
-                onClick={closeMenu}
-                href="https://api.whatsapp.com/send?phone=5521965316122&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o."
-              >
+              <a className="button" onClick={closeMenu} href="#contact">
                 Agende sua avaliação
               </a>
 
@@ -705,6 +701,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
                 </ul>
 
                 <a
+                  onClick={gtag_report_conversion}
                   className="button"
                   target="_blank"
                   rel="noreferrer"
@@ -885,6 +882,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
         id="whats-button"
         target="_blank"
         rel="noreferrer"
+        onClick={gtag_report_conversion}
         href="https://api.whatsapp.com/send?phone=5521965316122&text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o."
         ref={whatsButtonRef}
       >
