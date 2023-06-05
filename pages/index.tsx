@@ -7,9 +7,11 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 
-const Home: NextPage = ({ apeList, networkList }: any) => {
+const Home: NextPage = () => {
   const navRef = useRef<HTMLElement>(null);
+
   const sectionRef = useRef(null);
+
   const whatsButtonRef = useRef<HTMLAnchorElement>(null);
 
   function openMenu() {
@@ -580,7 +582,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
               </header>
               <div className="content">
                 <div style={{ marginTop: "5rem" }}>
-                  <Carousel slides={apeList} />
+                  <Carousel slides={[]} />
                 </div>
               </div>
             </div>
@@ -601,7 +603,7 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
               </header>
               <div className="content">
                 <div style={{ marginTop: "5rem" }}>
-                  <Carousel slides={networkList} />
+                  <Carousel slides={[]} />
                 </div>
               </div>
             </div>
@@ -864,26 +866,26 @@ const Home: NextPage = ({ apeList, networkList }: any) => {
   );
 };
 
-export async function getServerSideProps(context: any) {
-  const res = await Promise.all([
-    await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/ape"),
-    await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/network"),
-  ]);
+// export async function getServerSideProps(context: any) {
+//   const res = await Promise.all([
+//     await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/ape"),
+//     await fetch(process.env.NEXT_PUBLIC_BASE_URL + "/api/network"),
+//   ]);
 
-  const data = {
-    apeList: await res[0].json(),
-    networkList: await res[1].json(),
-  };
+//   const data = {
+//     apeList: await res[0].json(),
+//     networkList: await res[1].json(),
+//   };
 
-  if (!data.apeList && !data.networkList) {
-    return {
-      notFound: true,
-    };
-  }
+//   if (!data.apeList && !data.networkList) {
+//     return {
+//       notFound: true,
+//     };
+//   }
 
-  return {
-    props: { apeList: data.apeList, networkList: data.networkList },
-  };
-}
+//   return {
+//     props: { apeList: data.apeList, networkList: data.networkList },
+//   };
+// }
 
 export default Home;
